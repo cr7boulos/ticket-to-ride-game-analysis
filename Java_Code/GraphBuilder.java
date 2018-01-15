@@ -8,6 +8,7 @@ public class GraphBuilder
   {
     final int NEDERLAND_CITY_COUNT = 30;
     final int EUROPE_CITY_COUNT = 47;
+    final int PENNSYLVANIA_CITY_COUNT = 35;
     
     HashMap routesInCars = new HashMap<String, Integer>(200);
     HashMap routesInCoins = new HashMap<String, Integer>(200);
@@ -18,6 +19,7 @@ public class GraphBuilder
     
     String fileName = "";
     String routeFileName = "";
+    String outputFileName = "";
     
     Scanner inputStream = null;
     
@@ -27,13 +29,14 @@ public class GraphBuilder
                                     "Enter the number corresponding to the map you \n" +
                                     "would like to generate a file for: \n" +
                                      "1. Ticket to Ride: Europe \n" +
-                                     "2. Ticket to Ride: Nederlands");
+                                     "2. Ticket to Ride: Nederlands\n" +
+                                     "3. Ticket to Ride: Pennsylvania");
     int choice = 0;
     boolean valid = false;
       do{
       try{
         Scanner keyboard = new Scanner(System.in);
-        choice = Integer.parseInt(keyboard.next("[1-2]"));
+        choice = Integer.parseInt(keyboard.next("[1-3]"));
         valid = true;
       }
       catch(NoSuchElementException e){
@@ -44,13 +47,22 @@ public class GraphBuilder
     if(choice == 1){
      fileName = "..\\Europe_Data_Files\\Europe_Game_Graph.csv";
      routeFileName = "..\\Europe_Data_Files\\Europe_Route_Cards.csv";
+     outputFileName = "..\\Europe_Data_Files\\Output\\dependencies.csv";
      gameMap = new CityGraph(EUROPE_CITY_COUNT);
     }
     
     else if(choice == 2){
      fileName = "..\\Nederland_Data_Files\\Nederland_Game_Graph.csv";
      routeFileName = "..\\Nederland_Data_Files\\Nederland_Route_Cards.csv";
+     outputFileName = "..\\Nederland_Data_Files\\Output\\dependencies.csv";
      gameMap = new CityGraph(NEDERLAND_CITY_COUNT);
+    }
+    
+    else if(choice == 3){
+     fileName = "..\\Pennsylvania_Data_Files\\Pennsylvania_Game_Graph.csv";
+     routeFileName = "..\\Pennsylvania_Data_Files\\Pennsylvania_Route_Cards.csv";
+     outputFileName = "..\\Pennsylvania_Data_Files\\Output\\dependencies.csv";
+     gameMap = new CityGraph(PENNSYLVANIA_CITY_COUNT);
     }
     
     try
@@ -171,11 +183,11 @@ public class GraphBuilder
     PrintWriter outputStream = null;
     try
     {
-      outputStream = new PrintWriter(new File("..\\Europe_Data_Files\\Output\\dependencies.csv"));
+      outputStream = new PrintWriter(new File(outputFileName));
     }
     catch(FileNotFoundException e)
     {
-      System.out.println("Error opening the file: deps.csv");
+      System.out.println("Error opening the file: " + outputFileName);
       System.exit(0);
     }
     // create file headers
