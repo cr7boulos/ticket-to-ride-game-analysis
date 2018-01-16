@@ -9,6 +9,7 @@ public class GraphBuilder
     final int NEDERLAND_CITY_COUNT = 30;
     final int EUROPE_CITY_COUNT = 47;
     final int PENNSYLVANIA_CITY_COUNT = 35;
+    final int UNITED_KINGDOM_CITY_COUNT = 47;
     
     HashMap routesInCars = new HashMap<String, Integer>(200);
     HashMap routesInCoins = new HashMap<String, Integer>(200);
@@ -30,13 +31,14 @@ public class GraphBuilder
                                     "would like to generate a file for: \n" +
                                      "1. Ticket to Ride: Europe \n" +
                                      "2. Ticket to Ride: Nederlands\n" +
-                                     "3. Ticket to Ride: Pennsylvania");
+                                     "3. Ticket to Ride: Pennsylvania\n" + 
+                                      "4. Ticket to Ride: United Kingdom");
     int choice = 0;
     boolean valid = false;
       do{
       try{
         Scanner keyboard = new Scanner(System.in);
-        choice = Integer.parseInt(keyboard.next("[1-3]"));
+        choice = Integer.parseInt(keyboard.next("[1-4]"));
         valid = true;
       }
       catch(NoSuchElementException e){
@@ -63,6 +65,13 @@ public class GraphBuilder
      routeFileName = "..\\Pennsylvania_Data_Files\\Pennsylvania_Route_Cards.csv";
      outputFileName = "..\\Pennsylvania_Data_Files\\Output\\dependencies.csv";
      gameMap = new CityGraph(PENNSYLVANIA_CITY_COUNT);
+    }
+    
+    else if(choice == 4){
+     fileName = "..\\United_Kingdom_Data_Files\\United_Kingdom_Game_Graph.csv";
+     routeFileName = "..\\United_Kingdom_Data_Files\\United_Kingdom_Route_Cards.csv";
+     outputFileName = "..\\United_Kingdom_Data_Files\\Output\\dependencies.csv";
+     gameMap = new CityGraph(UNITED_KINGDOM_CITY_COUNT);
     }
     
     try
