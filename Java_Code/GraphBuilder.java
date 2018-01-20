@@ -6,6 +6,13 @@ public class GraphBuilder
 {
   public static void main (String [] args)
   {
+    // Steps for adding another map to the code base.
+    // Note: this program assumes you are running this code on
+    // Windows. Path strings may need to be changed if running
+    // on Linux or MacOS.
+    
+    // 1. Add a counter for the number of cities on the board.
+    // Procede to step 2 below.
     final int NEDERLAND_CITY_COUNT = 30;
     final int EUROPE_CITY_COUNT = 47;
     final int PENNSYLVANIA_CITY_COUNT = 35;
@@ -24,6 +31,8 @@ public class GraphBuilder
     
     Scanner inputStream = null;
     
+    // 2. Update the output text to list the number option to select
+    // for analyzing your map. Procede to step 3 below.
     System.out.println("This program creates CSV files \n" + 
                                     "mapping the number of dependencies between \n" +
                                     "routes in various game boards of Ticket to Ride.\n" +
@@ -32,13 +41,16 @@ public class GraphBuilder
                                      "1. Ticket to Ride: Europe \n" +
                                      "2. Ticket to Ride: Nederlands\n" +
                                      "3. Ticket to Ride: Pennsylvania\n" + 
-                                      "4. Ticket to Ride: United Kingdom");
+                                     "4. Ticket to Ride: United Kingdom");
     int choice = 0;
     boolean valid = false;
       do{
       try{
         Scanner keyboard = new Scanner(System.in);
-        choice = Integer.parseInt(keyboard.next("[1-4]"));
+        
+        // 3. modify the regex string below to accept your number
+        // as a valid option. Procede to step 4 below.
+        choice = Integer.parseInt(keyboard.next("[1-4]")); 
         valid = true;
       }
       catch(NoSuchElementException e){
@@ -73,6 +85,10 @@ public class GraphBuilder
      outputFileName = "..\\United_Kingdom_Data_Files\\Output\\dependencies.csv";
      gameMap = new CityGraph(UNITED_KINGDOM_CITY_COUNT);
     }
+    
+    // 4. Copy one of the above else-if clauses and update the details
+    // as needed. Your map is now ready to be analyzed. Compile and
+    // run this program.
     
     try
     {
