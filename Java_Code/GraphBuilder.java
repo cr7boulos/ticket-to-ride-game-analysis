@@ -138,7 +138,7 @@ public class GraphBuilder
       String line = inputStream.nextLine();
       String [] contents = line.split(",");
       // index: 0 - Origin; 1 - originId; 2 - Destination; 3 - destinationId;
-      // 4 - carCost; 5 - coinCost
+      // 4 - carCost; 5 - coinCost (Nederlands only)
       
       int originId = Integer.parseInt(contents[1]);
       int destId = Integer.parseInt(contents[3]);

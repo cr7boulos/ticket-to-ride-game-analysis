@@ -1,8 +1,26 @@
 # ticket-to-ride-game-analysis
 Analysis of optimal routes in various versions of the Ticket to Ride board game
 
-For anyone wishing to analyze an expansion of Ticket to Ride (TTR) not listed here,
-simply follow the steps below: 
+## Algorithm Design
+This code computes a measure for determining optimal tracks to claim
+on various maps of Ticket to Ride (TTR). It works as follows: each board is
+modelled as a graph. Then for each destination ticket, the shortest paths are
+computed. For each track on the board a counter of the number of shortest paths that
+depend on said track is stored. So if a given track is referenced by multiple
+shortest paths, it is of more importance for claiming. The reasoning is if a player
+focuses on claiming the most referenced routes, the chances of drawing additional
+destination tickets that already lay on, or very near, the player's pre-existing network
+are maximized--thus enabling the player to score points more quickly and perhaps
+win the game.
+
+## Program Output
+Each map outputs a CSV file listing various tracks on a given board and 
+the number of times it is referenced in a shortest path corresponding to a
+destination ticket. Note: not all tracks on the board will be included
+in the program output. Such tracks are not refernced in any shortest paths.
+
+For anyone wishing to analyze an expansion of TTR not listed here,
+simply follow the steps below:
 
 The Java code works for any map of TTR with a minimal of tweaking. To add another map
 to the code base, simply create two CSV files: one of all the invidiual tracks on the
